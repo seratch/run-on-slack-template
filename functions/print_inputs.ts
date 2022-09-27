@@ -38,7 +38,8 @@ const handler: SlackFunctionHandler<typeof def.definition> = async ({
 }) => {
   const logger = await getLogger(env.logLevel);
   logger.debug(inputs);
-  return await { outputs: {} };
+
+  return { outputs: {} };
 };
 
 export default handler;

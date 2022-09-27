@@ -36,6 +36,7 @@ const handler: SlackFunctionHandler<typeof def.definition> = async ({
 }) => {
   const logger = await getLogger(env.logLevel);
   logger.debug(inputs);
+
   const client: SlackAPIClient = SlackAPI(token);
   if (inputs.channelId && inputs.messageText) {
     const response = await client.chat.postMessage({
@@ -50,8 +51,9 @@ const handler: SlackFunctionHandler<typeof def.definition> = async ({
         },
       };
     } else {
-      logger.error(`Failed to send a message: ${response.error}`);
-      return { outputs: {} };
+      const error = `Failed to send a message: ${response.error}`;
+      logger.error(error);
+      return { outputs: {}, error };
     }
   }
   return { outputs: {} };

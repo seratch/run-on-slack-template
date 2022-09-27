@@ -37,10 +37,11 @@ const handler: SlackFunctionHandler<typeof def.definition> = async ({
 }) => {
   const logger = await getLogger(env.logLevel);
   logger.debug(inputs);
+
   const { messageText } = inputs;
   const updatedMessageText =
     `:wave: You submitted the following message: \n\n>${messageText}`;
-  return await { outputs: { updatedMessageText } };
+  return { outputs: { updatedMessageText } };
 };
 
 export default handler;

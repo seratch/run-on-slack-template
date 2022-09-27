@@ -45,14 +45,16 @@ const handler: SlackFunctionHandler<typeof def.definition> = async ({
 }) => {
   const logger = await getLogger(env.logLevel);
   logger.debug(inputs);
+
   const client: SlackAPIClient = SlackAPI(token);
   const result = await save(client, env, inputs);
   if (result.ok) {
-    return await { outputs: { templateId: result.item.id } };
+    return { outputs: { templateId: result.item.id } };
   } else {
-    logger.error(`Failed to insert a new record: ${result.error}`);
+    const error = `Failed to insert a new record: ${result.error}`;
+    logger.error(error);
     logger.debug(result);
-    return await { outputs: {} };
+    return { outputs: {}, error };
   }
 };
 

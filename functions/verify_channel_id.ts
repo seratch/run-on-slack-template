@@ -34,6 +34,7 @@ const handler: SlackFunctionHandler<typeof def.definition> = async ({
 }) => {
   const logger = await getLogger(env.logLevel);
   logger.debug(inputs);
+
   const client: SlackAPIClient = SlackAPI(token);
   const response = await client.conversations.info({
     channel_id: inputs.channelId,
@@ -41,9 +42,10 @@ const handler: SlackFunctionHandler<typeof def.definition> = async ({
   if (response.ok) {
     return { outputs: { channelId: inputs.channelId } };
   } else {
-    logger.error(`Invalid channel ID detected: ${response.error}`);
+    const error = `Invalid channel ID detected: ${response.error}`;
+    logger.error(error);
     logger.debug(response);
-    return { outputs: {} };
+    return { outputs: {}, error };
   }
 };
 

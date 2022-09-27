@@ -23,12 +23,14 @@ const trigger: Trigger<typeof workflowDef.definition> = {
     //   on_week_num: 3,
     //   repeats_every: 1,
     // },
+
     // Weekly
     // frequency: {
     //   type: "weekly",
     //   on_days: ["Monday"],
     //   repeats_every: 1,
     // },
+
     // Daily
     frequency: {
       type: "daily",
