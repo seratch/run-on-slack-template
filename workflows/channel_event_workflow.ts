@@ -1,6 +1,7 @@
 import { DefineWorkflow, Schema } from "deno-slack-sdk/mod.ts";
 import { def as verifyChannelId } from "../functions/verify_channel_id.ts";
 import { def as sendMessageIfAny } from "../functions/send_message_if_any.ts";
+import { def as handleMessageInteractivity } from "../functions/handle_message_interactivity.ts";
 import { def as printInputs } from "../functions/print_inputs.ts";
 
 /**
@@ -13,6 +14,7 @@ const workflow = DefineWorkflow({
   title: "Channel Event Workflow",
   input_parameters: {
     properties: {
+      userId: { type: Schema.slack.types.user_id },
       channelId: { type: Schema.slack.types.channel_id },
       messageTs: { type: Schema.types.string },
     },
@@ -31,5 +33,12 @@ workflow.addStep(printInputs, {
   channel: sendMessageStep.outputs.channelId,
   ts: sendMessageStep.outputs.messageTs,
 });
+workflow.addStep(
+  handleMessageInteractivity,
+  {
+    channelId: verificationStep.outputs.channelId,
+    userId: workflow.inputs.userId,
+  },
+);
 
 export default workflow;

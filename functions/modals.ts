@@ -6,6 +6,11 @@ export const buildNewModalView = function () {
       "type": "plain_text",
       "text": "Reason for the denial",
     },
+    "notify_on_close": true,
+    "submit": {
+      "type": "plain_text",
+      "text": "Confirm",
+    },
     "blocks": [
       {
         "type": "input",
@@ -41,10 +46,6 @@ export const buildNewModalView = function () {
         ],
       },
     ],
-    "submit": {
-      "type": "plain_text",
-      "text": "Confirm",
-    },
   };
 };
 
@@ -56,6 +57,11 @@ export const buildConfirmationView = function (reason: string) {
       "type": "plain_text",
       "text": "Reason for the denial",
     },
+    "notify_on_close": true,
+    "submit": {
+      "type": "plain_text",
+      "text": "Submit",
+    },
     "private_metadata": reason,
     "blocks": [
       {
@@ -66,9 +72,5 @@ export const buildConfirmationView = function (reason: string) {
         },
       },
     ],
-    "submit": {
-      "type": "plain_text",
-      "text": "Submit",
-    },
   };
 };

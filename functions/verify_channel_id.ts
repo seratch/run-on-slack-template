@@ -35,7 +35,7 @@ export default SlackFunction(def, async ({
 
   const client = SlackAPI(token);
   const response = await client.conversations.info({
-    channel_id: inputs.channelId,
+    channel: inputs.channelId,
   });
   if (response.ok) {
     return { outputs: { channelId: inputs.channelId } };

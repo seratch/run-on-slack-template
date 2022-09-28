@@ -82,4 +82,12 @@ export default SlackFunction(def, async ({
       // nothing to return if you want to close this modal
       return;
     },
+  )
+  .addViewClosedHandler(
+    ["deny-reason-submission", "deny-reason-confirmation"],
+    ({ view, env }) => {
+      const logger = Logger(env.logLevel);
+      logger.debug(JSON.stringify(view, null, 2));
+      return;
+    },
   );

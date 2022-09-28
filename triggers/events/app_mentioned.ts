@@ -7,10 +7,10 @@ import workflowDef from "../../workflows/channel_event_workflow.ts";
  */
 const trigger: Trigger<typeof workflowDef.definition> = {
   type: "event",
-  name: "reaction_added event trigger",
+  name: "app_mentioned event trigger",
   workflow: `#/workflows/${workflowDef.definition.callback_id}`,
   event: {
-    event_type: "slack#/events/reaction_added",
+    event_type: "slack#/events/app_mentioned",
     // TODO: Listing all the channels to enable here is required
     channel_ids: ["CLT1F93TP"],
   },
@@ -18,8 +18,6 @@ const trigger: Trigger<typeof workflowDef.definition> = {
     channelId: { value: "{{data.channel_id}}" },
     messageTs: { value: "{{data.message_ts}}" },
     userId: { value: "{{data.user_id}}" },
-    // TODO: You can any of the following and have the same set in the workflow
-    // reaction: { value: "{{data.reaction}}" },
   },
 };
 

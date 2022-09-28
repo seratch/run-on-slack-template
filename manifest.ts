@@ -10,7 +10,7 @@ import datastoreWorkflow from "./workflows/datastore_workflow.ts";
  * See https://api.slack.com/future/manifest
  */
 export default Manifest({
-  name: "my-app-name",
+  name: "My awesome app",
   description: "A template for building Slack apps with Deno",
   icon: "assets/icon.png",
   workflows: [
@@ -26,10 +26,14 @@ export default Manifest({
     "commands",
     "chat:write",
     "chat:write.public",
-    // for triggers/channel_events/rewaction_added.ts
+    // for triggers/channel_events/app_mentioned.ts
+    "app_mentions:read",
+    // for triggers/channel_events/reaction_added.ts
     "reactions:read",
     // for datastores/message_templates.ts
     "datastore:read",
     "datastore:write",
+    // for functions/verify_channel_id.ts
+    "channels:read",
   ],
 });
