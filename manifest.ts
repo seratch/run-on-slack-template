@@ -1,10 +1,13 @@
 import { Manifest } from "deno-slack-sdk/mod.ts";
+import { IncidentEvent } from "./event_types/incident.ts";
 import { def as messageTemplates } from "./datastores/message_templates.ts";
 import interactivityWorkflow from "./workflows/interactivity_workflow.ts";
 import interactiveBlocksWorkflow from "./workflows/interactive_blocks_workflow.ts";
 import channelEventWorkflow from "./workflows/channel_event_workflow.ts";
 import linkTriggerWorkflow from "./workflows/link_trigger_workflow.ts";
 import datastoreWorkflow from "./workflows/datastore_workflow.ts";
+import messageMetadataSenderWorkflow from "./workflows/message_metadata_sender_workflow.ts";
+import messageMetadataReceiverWorkflow from "./workflows/message_metadata_receiver_workflow.ts";
 
 /**
  * See https://api.slack.com/future/manifest
@@ -19,7 +22,10 @@ export default Manifest({
     channelEventWorkflow,
     linkTriggerWorkflow,
     datastoreWorkflow,
+    messageMetadataSenderWorkflow,
+    messageMetadataReceiverWorkflow,
   ],
+  events: [IncidentEvent],
   datastores: [messageTemplates],
   outgoingDomains: [],
   botScopes: [
@@ -30,6 +36,8 @@ export default Manifest({
     "app_mentions:read",
     // for triggers/channel_events/reaction_added.ts
     "reactions:read",
+    // for triggers/events/message_metadata_posted.ts
+    "metadata.message:read",
     // for datastores/message_templates.ts
     "datastore:read",
     "datastore:write",
