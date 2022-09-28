@@ -8,7 +8,7 @@ mf.install();
 
 mf.mock("POST@/api/conversations.info", async (req) => {
   const body = await req.formData();
-  if (body.get("channel_id")?.toString().startsWith("C")) {
+  if (body.get("channel")?.toString().startsWith("C")) {
     return new Response(`{"ok": true, "channel": {}}`, {
       status: 200,
     });

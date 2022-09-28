@@ -36,9 +36,9 @@ export default SlackFunction(def, async ({
   }
 
   const client = SlackAPI(token);
+  // Note that chat.postEphemeral with buttons does not work as of Sep 2022
   await client.chat.postMessage({
     channel: inputs.channelId,
-    //user: inputs.userId,
     text: "Hi there! How many functions have you created?",
     blocks: [
       {
