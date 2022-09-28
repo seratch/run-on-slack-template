@@ -1,5 +1,5 @@
 import { Trigger } from "deno-slack-api/types.ts";
-import workflowDef from "../../workflows/interactivity_workflow.ts";
+import workflowDef from "../../workflows/link_trigger_workflow.ts";
 
 console.log(workflowDef.definition.callback_id);
 /**
@@ -10,12 +10,8 @@ const trigger: Trigger<typeof workflowDef.definition> = {
   name: "Sample trigger",
   workflow: `#/workflows/${workflowDef.definition.callback_id}`,
   inputs: {
-    interactivity: {
-      value: "{{data.interactivity}}",
-    },
-    channel: {
-      value: "{{data.channel_id}}",
-    },
+    interactivity: { value: "{{data.interactivity}}" },
+    channel: { value: "{{data.channel_id}}" },
   },
 };
 

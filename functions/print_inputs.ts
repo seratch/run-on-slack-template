@@ -8,7 +8,6 @@ import { FunctionSourceFile } from "../utils/function_source_file.ts";
 export const def = DefineFunction({
   callback_id: "printer",
   title: "Print inputs",
-  description: "Print inputs",
   source_file: FunctionSourceFile(import.meta.url),
   input_parameters: {
     properties: {
@@ -16,6 +15,8 @@ export const def = DefineFunction({
       id: { type: Schema.types.string },
       name: { type: Schema.types.string },
       text: { type: Schema.types.string },
+      channel: { type: Schema.slack.types.channel_id },
+      ts: { type: Schema.types.string },
     },
     required: [],
   },

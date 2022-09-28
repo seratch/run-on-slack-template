@@ -1,5 +1,7 @@
 import { DefineWorkflow, Schema } from "deno-slack-sdk/mod.ts";
 import { def as verifyChannelId } from "../functions/verify_channel_id.ts";
+import { def as sendMessageIfAny } from "../functions/send_message_if_any.ts";
+import { def as printInputs } from "../functions/print_inputs.ts";
 
 /**
  * A Workflow is a set of steps that are executed in order.
@@ -21,9 +23,13 @@ const workflow = DefineWorkflow({
 const verificationStep = workflow.addStep(verifyChannelId, {
   channelId: workflow.inputs.channelId,
 });
-workflow.addStep(Schema.slack.functions.SendMessage, {
-  channel_id: verificationStep.outputs.channelId,
-  message: "Hi there!",
+const sendMessageStep = workflow.addStep(sendMessageIfAny, {
+  channelId: verificationStep.outputs.channelId,
+  messageText: "Hi there!",
+});
+workflow.addStep(printInputs, {
+  channel: sendMessageStep.outputs.channelId,
+  ts: sendMessageStep.outputs.messageTs,
 });
 
 export default workflow;

@@ -1,7 +1,9 @@
 import { Manifest } from "deno-slack-sdk/mod.ts";
 import { def as messageTemplates } from "./datastores/message_templates.ts";
-import channelEventWorkflow from "./workflows/channel_event_workflow.ts";
 import interactivityWorkflow from "./workflows/interactivity_workflow.ts";
+import interactiveBlocksWorkflow from "./workflows/interactive_blocks_workflow.ts";
+import channelEventWorkflow from "./workflows/channel_event_workflow.ts";
+import linkTriggerWorkflow from "./workflows/link_trigger_workflow.ts";
 import datastoreWorkflow from "./workflows/datastore_workflow.ts";
 
 /**
@@ -12,8 +14,10 @@ export default Manifest({
   description: "A template for building Slack apps with Deno",
   icon: "assets/icon.png",
   workflows: [
-    channelEventWorkflow,
     interactivityWorkflow,
+    interactiveBlocksWorkflow,
+    channelEventWorkflow,
+    linkTriggerWorkflow,
     datastoreWorkflow,
   ],
   datastores: [messageTemplates],
