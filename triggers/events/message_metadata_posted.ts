@@ -17,10 +17,10 @@ const trigger: Trigger<typeof workflowDef.definition> = {
   },
   inputs: {
     channelId: { value: "{{data.channel_id}}" },
-    id: { value: "{{data.metadata.event_payload.incident_id}}" },
-    title: { value: "{{data.metadata.event_payload.incident_title}}" },
-    summary: { value: "{{data.metadata.event_payload.incident_summary}}" },
-    severity: { value: "{{data.metadata.event_payload.incident_severity}}" },
+    id: { value: "{{data.metadata.event_payload.id}}" },
+    title: { value: "{{data.metadata.event_payload.title}}" },
+    summary: { value: "{{data.metadata.event_payload.summary}}" },
+    severity: { value: "{{data.metadata.event_payload.severity}}" },
   },
 };
 

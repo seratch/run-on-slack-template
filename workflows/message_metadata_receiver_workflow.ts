@@ -1,4 +1,5 @@
 import { DefineWorkflow, Schema } from "deno-slack-sdk/mod.ts";
+import { def as printInputs } from "../functions/print_inputs.ts";
 
 /**
  * A Workflow is a set of steps that are executed in order.
@@ -18,6 +19,10 @@ const workflow = DefineWorkflow({
     },
     required: ["channelId"],
   },
+});
+
+workflow.addStep(printInputs, {
+  id: workflow.inputs.id,
 });
 
 export default workflow;
