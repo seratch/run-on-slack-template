@@ -1,4 +1,4 @@
-export function resolveFunctionSourceFile(
+export const FunctionSourceFile = function (
   // Pass the value of import.meta.url in a function code
   importMetaUrl: string,
   // If you have sub diretories under "functions" dir, set the depth.
@@ -8,4 +8,4 @@ export function resolveFunctionSourceFile(
   const sliceStart = -2 - depth;
   const path = new URL("", importMetaUrl).pathname;
   return path.split("/").slice(sliceStart).join("/");
-}
+};

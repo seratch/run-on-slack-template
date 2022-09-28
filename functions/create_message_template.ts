@@ -2,7 +2,7 @@ import { DefineFunction, Schema, SlackFunction } from "deno-slack-sdk/mod.ts";
 import { SlackAPI } from "deno-slack-api/mod.ts";
 import { SlackAPIClient } from "deno-slack-api/types.ts";
 import { Logger } from "../utils/logger.ts";
-import { resolveFunctionSourceFile } from "../utils/source_file_resoluion.ts";
+import { FunctionSourceFile } from "../utils/function_source_file.ts";
 import { save } from "../datastores/message_templates.ts";
 
 /**
@@ -12,7 +12,7 @@ export const def = DefineFunction({
   callback_id: "create-message-template",
   title: "Create a new message template",
   description: "Create a new message template",
-  source_file: resolveFunctionSourceFile(import.meta.url),
+  source_file: FunctionSourceFile(import.meta.url),
   input_parameters: {
     properties: {
       templateName: {
