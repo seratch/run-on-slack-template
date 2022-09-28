@@ -1,6 +1,5 @@
-import { DefineFunction, Schema } from "deno-slack-sdk/mod.ts";
-import { SlackFunctionHandler } from "deno-slack-sdk/types.ts";
-import { getLogger } from "../utils/logger.ts";
+import { DefineFunction, Schema, SlackFunction } from "deno-slack-sdk/mod.ts";
+import { Logger } from "../utils/logger.ts";
 import { resolveFunctionSourceFile } from "../utils/source_file_resoluion.ts";
 
 /**
@@ -31,17 +30,15 @@ export const def = DefineFunction({
   },
 });
 
-const handler: SlackFunctionHandler<typeof def.definition> = async ({
+export default SlackFunction(def, ({
   inputs,
   env,
 }) => {
-  const logger = await getLogger(env.logLevel);
+  const logger = Logger(env.logLevel);
   logger.debug(inputs);
 
   const { messageText } = inputs;
   const updatedMessageText =
     `:wave: You submitted the following message: \n\n>${messageText}`;
   return { outputs: { updatedMessageText } };
-};
-
-export default handler;
+});

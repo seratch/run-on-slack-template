@@ -1,12 +1,12 @@
 import * as log from "https://deno.land/std@0.157.0/log/mod.ts";
 
-export async function getLogger(
+export const Logger = function (
   level?: string,
-): Promise<log.Logger> {
+): log.Logger {
   const logLevel: log.LevelName = level === undefined
     ? "DEBUG"
     : level as log.LevelName;
-  await log.setup({
+  log.setup({
     handlers: {
       console: new log.handlers.ConsoleHandler(logLevel),
     },
@@ -18,4 +18,4 @@ export async function getLogger(
     },
   });
   return log.getLogger();
-}
+};

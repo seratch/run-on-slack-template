@@ -1,7 +1,7 @@
 import { DefineDatastore, Schema } from "deno-slack-sdk/mod.ts";
 import { Env } from "deno-slack-sdk/types.ts";
 import { SlackAPIClient } from "deno-slack-api/types.ts";
-import { getLogger } from "../utils/logger.ts";
+import { Logger } from "../utils/logger.ts";
 
 export const DATASTORE_NAME = "message_templates";
 
@@ -36,7 +36,7 @@ export async function save(
   env: Env,
   args: SaveArgs,
 ) {
-  const logger = await getLogger(env.logLevel);
+  const logger = Logger(env.logLevel);
   logger.debug(`Saving a recored: ${JSON.stringify(args)}`);
   const result = await client.apps.datastore.put({
     datastore: DATASTORE_NAME,
@@ -55,7 +55,7 @@ export async function findById(
   env: Env,
   id: string,
 ) {
-  const logger = await getLogger(env.logLevel);
+  const logger = Logger(env.logLevel);
   logger.debug(`Finding a record for id: ${id}`);
   const result = await client.apps.datastore.get({
     datastore: DATASTORE_NAME,
@@ -70,7 +70,7 @@ export async function deleteById(
   env: Env,
   id: string,
 ) {
-  const logger = await getLogger(env.logLevel);
+  const logger = Logger(env.logLevel);
   logger.debug(`Deleting a record for id: ${id}`);
   const result = await client.apps.datastore.delete({
     datastore: DATASTORE_NAME,
