@@ -9,15 +9,10 @@ import { def as verifyChannelId } from "../functions/verify_channel_id.ts";
 const workflow = DefineWorkflow({
   callback_id: "channel-event-workflow",
   title: "Channel Event Workflow",
-  description: "TODO",
   input_parameters: {
     properties: {
-      channelId: {
-        type: Schema.slack.types.channel_id,
-      },
-      messageTs: {
-        type: Schema.types.string,
-      },
+      channelId: { type: Schema.slack.types.channel_id },
+      messageTs: { type: Schema.types.string },
     },
     required: ["channelId"],
   },

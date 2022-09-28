@@ -1,6 +1,5 @@
 import { DefineFunction, Schema, SlackFunction } from "deno-slack-sdk/mod.ts";
 import { SlackAPI } from "deno-slack-api/mod.ts";
-import { SlackAPIClient } from "deno-slack-api/types.ts";
 import { Logger } from "../utils/logger.ts";
 import { FunctionSourceFile } from "../utils/function_source_file.ts";
 
@@ -34,7 +33,7 @@ export default SlackFunction(def, async ({
   const logger = Logger(env.logLevel);
   logger.debug(inputs);
 
-  const client: SlackAPIClient = SlackAPI(token);
+  const client = SlackAPI(token);
   const response = await client.conversations.info({
     channel_id: inputs.channelId,
   });

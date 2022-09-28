@@ -8,7 +8,6 @@ console.log(workflowDef.definition.callback_id);
 const trigger: Trigger<typeof workflowDef.definition> = {
   type: "shortcut",
   name: "Sample trigger",
-  description: "A sample trigger",
   workflow: `#/workflows/${workflowDef.definition.callback_id}`,
   inputs: {
     interactivity: {

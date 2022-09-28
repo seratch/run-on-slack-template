@@ -8,12 +8,9 @@ import { def as printInputs } from "../functions/print_inputs.ts";
 const workflow = DefineWorkflow({
   callback_id: "datastore-workflow",
   title: "Datastore Workflow",
-  description: "TODO",
   input_parameters: {
     properties: {
-      interactivity: {
-        type: Schema.slack.types.interactivity,
-      },
+      interactivity: { type: Schema.slack.types.interactivity },
     },
     required: ["interactivity"],
   },

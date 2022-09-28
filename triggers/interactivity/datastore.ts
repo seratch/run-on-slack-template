@@ -7,7 +7,6 @@ import workflowDef from "../../workflows/datastore_workflow.ts";
 const trigger: Trigger<typeof workflowDef.definition> = {
   type: "shortcut",
   name: "Datastore trigger",
-  description: "Datastore workflow trigger",
   workflow: `#/workflows/${workflowDef.definition.callback_id}`,
   inputs: {
     interactivity: {

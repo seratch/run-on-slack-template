@@ -13,15 +13,9 @@ export const def = DefineFunction({
   input_parameters: {
     properties: {
       // You can customize these keys
-      id: {
-        type: Schema.types.string,
-      },
-      name: {
-        type: Schema.types.string,
-      },
-      text: {
-        type: Schema.types.string,
-      },
+      id: { type: Schema.types.string },
+      name: { type: Schema.types.string },
+      text: { type: Schema.types.string },
     },
     required: [],
   },

@@ -8,7 +8,6 @@ import workflowDef from "../../workflows/channel_event_workflow.ts";
 const trigger: Trigger<typeof workflowDef.definition> = {
   type: "webhook",
   name: "Incoming webhook trigger",
-  description: "A trigger to start a new workflow",
   workflow: `#/workflows/${workflowDef.definition.callback_id}`,
   inputs: {
     channelId: {

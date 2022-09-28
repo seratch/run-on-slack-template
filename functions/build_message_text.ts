@@ -8,23 +8,16 @@ import { FunctionSourceFile } from "../utils/function_source_file.ts";
 export const def = DefineFunction({
   callback_id: "build-message-text",
   title: "Build a new message text",
-  description: "Build a new message text",
   source_file: FunctionSourceFile(import.meta.url),
   input_parameters: {
     properties: {
-      messageText: {
-        type: Schema.types.string,
-        description: "Message to be posted",
-      },
+      messageText: { type: Schema.types.string },
     },
     required: ["messageText"],
   },
   output_parameters: {
     properties: {
-      updatedMessageText: {
-        type: Schema.types.string,
-        description: "Updated message to be posted",
-      },
+      updatedMessageText: { type: Schema.types.string },
     },
     required: ["updatedMessageText"],
   },

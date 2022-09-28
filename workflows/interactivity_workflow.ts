@@ -7,15 +7,10 @@ import { def as buildMessageText } from "../functions/build_message_text.ts";
 const workflow = DefineWorkflow({
   callback_id: "interactivity-workflow",
   title: "Interactivity Workflow",
-  description: "TODO",
   input_parameters: {
     properties: {
-      interactivity: {
-        type: Schema.slack.types.interactivity,
-      },
-      channel: {
-        type: Schema.slack.types.channel_id,
-      },
+      interactivity: { type: Schema.slack.types.interactivity },
+      channel: { type: Schema.slack.types.channel_id },
     },
     required: ["interactivity"],
   },
