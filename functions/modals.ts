@@ -56,6 +56,7 @@ export const buildConfirmationView = function (reason: string) {
       "type": "plain_text",
       "text": "Reason for the denial",
     },
+    "private_metadata": reason,
     "blocks": [
       {
         "type": "section",

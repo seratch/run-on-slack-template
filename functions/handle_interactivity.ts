@@ -78,8 +78,7 @@ export default SlackFunction(def, async ({
     ["deny-reason-confirmation"],
     ({ view, env }) => {
       const logger = Logger(env.logLevel);
-      const values = view.state.values;
-      logger.debug(JSON.stringify(values, null, 2));
+      logger.debug(view.private_metadata);
       // nothing to return if you want to close this modal
       return;
     },
