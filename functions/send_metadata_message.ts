@@ -2,7 +2,7 @@ import { DefineFunction, Schema, SlackFunction } from "deno-slack-sdk/mod.ts";
 import { SlackAPI } from "deno-slack-api/mod.ts";
 import { Logger } from "../utils/logger.ts";
 import { FunctionSourceFile } from "../utils/function_source_file.ts";
-import { IncidentEvent } from "../event_types/incident.ts";
+import IncidentEvent from "../event_types/incident.ts";
 
 /**
  * See https://api.slack.com/future/functions/custom

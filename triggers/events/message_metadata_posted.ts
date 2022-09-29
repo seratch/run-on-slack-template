@@ -1,6 +1,6 @@
 import { Trigger } from "deno-slack-api/types.ts";
 import workflowDef from "../../workflows/message_metadata_receiver_workflow.ts";
-import { IncidentEvent } from "../../event_types/incident.ts";
+import IncidentEvent from "../../event_types/incident.ts";
 
 /**
  * See https://api.slack.com/future/triggers/event

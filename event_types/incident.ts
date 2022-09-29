@@ -1,6 +1,6 @@
 import { DefineEvent, Schema } from "deno-slack-sdk/mod.ts";
 
-export const IncidentEvent = DefineEvent({
+const IncidentEvent = DefineEvent({
   name: "my_incident_event",
   title: "Incident",
   type: Schema.types.object,
@@ -13,3 +13,4 @@ export const IncidentEvent = DefineEvent({
   required: ["id", "title", "summary", "severity"],
   additionalProperties: false,
 });
+export default IncidentEvent;

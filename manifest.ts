@@ -1,5 +1,5 @@
 import { Manifest } from "deno-slack-sdk/mod.ts";
-import { IncidentEvent } from "./event_types/incident.ts";
+import IncidentEvent from "./event_types/incident.ts";
 import { def as messageTemplates } from "./datastores/message_templates.ts";
 import interactivityWorkflow from "./workflows/interactivity_workflow.ts";
 import interactiveBlocksWorkflow from "./workflows/interactive_blocks_workflow.ts";
