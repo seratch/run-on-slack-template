@@ -8,6 +8,8 @@ import linkTriggerWorkflow from "./workflows/link_trigger_workflow.ts";
 import datastoreWorkflow from "./workflows/datastore_workflow.ts";
 import messageMetadataSenderWorkflow from "./workflows/message_metadata_sender_workflow.ts";
 import messageMetadataReceiverWorkflow from "./workflows/message_metadata_receiver_workflow.ts";
+import reactionAddedEventSetupWorkflow from "./workflows/reaction_added_event_setup_workflow.ts";
+import reactionAddedEventWorkflow from "./workflows/reaction_added_event_workflow.ts";
 
 /**
  * See https://api.slack.com/future/manifest
@@ -24,6 +26,8 @@ export default Manifest({
     datastoreWorkflow,
     messageMetadataSenderWorkflow,
     messageMetadataReceiverWorkflow,
+    reactionAddedEventSetupWorkflow,
+    reactionAddedEventWorkflow,
   ],
   events: [IncidentEvent],
   datastores: [messageTemplates],
@@ -43,5 +47,9 @@ export default Manifest({
     "datastore:write",
     // for functions/verify_channel_id.ts
     "channels:read",
+    // for functions/manage_reaction_added_event_trigger.ts
+    "triggers:read",
+    "triggers:write",
+    "channels:join",
   ],
 });
