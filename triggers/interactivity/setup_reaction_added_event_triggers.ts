@@ -1,7 +1,6 @@
 import { Trigger } from "deno-slack-api/types.ts";
 import workflowDef from "../../workflows/reaction_added_event_setup_workflow.ts";
 
-console.log(workflowDef.definition.callback_id);
 /**
  * See https://api.slack.com/future/triggers/link
  */

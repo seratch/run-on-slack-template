@@ -11,7 +11,7 @@ const workflow = DefineWorkflow({
       channelId: { type: Schema.slack.types.channel_id },
       messageTs: { type: Schema.types.string },
       reaction: { type: Schema.types.string },
-  },
+    },
     required: ["channelId", "messageTs", "reaction"],
   },
 });
